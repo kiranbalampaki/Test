@@ -1,13 +1,21 @@
 package com.example.test;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import static junit.framework.TestCase.assertEquals;
 
 public class MyTest {
 
+    Arithmetic arithmetic = null;
+
+    @Before
+    public void setUp(){
+        arithmetic = new Arithmetic();
+    }
+
     @Test
     public void testAddition(){
-        Arithmetic arithmetic = new Arithmetic();
         float expectedResult = 10;
         float actualResult = arithmetic.add(4,6);
         assertEquals(expectedResult, actualResult);
@@ -15,7 +23,6 @@ public class MyTest {
 
     @Test
     public void testSubtraction(){
-        Arithmetic arithmetic = new Arithmetic();
         float expectedResult = 4;
         float actualResult = arithmetic.subtract(6,2);
         assertEquals(expectedResult, actualResult);
@@ -23,9 +30,13 @@ public class MyTest {
 
     @Test
     public void testDivision(){
-        Arithmetic arithmetic = new Arithmetic();
         float expectedResult = 4;
         float actualResult = arithmetic.divide(8,2);
         assertEquals(expectedResult, actualResult);
+    }
+
+    @After
+    public void tearDown(){
+        arithmetic = null;
     }
 }
